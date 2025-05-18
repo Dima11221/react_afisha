@@ -1,0 +1,40 @@
+@use "../../styles/globals";
+
+.row {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+}
+
+.inputField {
+  position: relative;
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+
+.searchBtn {
+  position: absolute;
+  top: 0;
+  right: 4px;
+}
+
+.inputStyle {
+  background-color: transparent;
+  color: var(--grey);
+  font-size: 18px;
+  border: none;
+  border-bottom: 1px solid var(--light-grey);
+  border-radius: 0;
+  outline: none;
+  height: 48px;
+  width: 100%;
+  line-height: 25px;
+  margin: 0 0 8px 0;
+  padding: 0;
+  box-sizing: content-box;
+  cursor: text;
+}
+
+.inputStyle::placeholder {
+  opacity: 60%;
+}

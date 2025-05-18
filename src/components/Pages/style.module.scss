@@ -1,0 +1,15 @@
+@use "../../components/Search/style.module";
+
+.buttonsPos {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.btnPage {
+  width: 180px;
+}

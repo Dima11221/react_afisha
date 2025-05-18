@@ -1,0 +1,33 @@
+@use "../../styles/globals";
+
+.error {
+  width: 500px;
+  text-align: center;
+  padding: 50px 0;
+}
+
+.linkWrapper {
+  min-height: 100vh;
+}
+
+.linkWrapperContent {
+  max-width: 1080px;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  margin: 150px auto;
+  gap: 60px;
+}
+
+.linkContentInfo {
+  width: 400px;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.LinkPoster {
+  width: 400px;
+  height: 600px;
+  border-radius: 10px;
+}
+
