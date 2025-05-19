@@ -12,11 +12,7 @@
 
 .linkWrapperContent {
   max-width: 1080px;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: center;
-  margin: 150px auto;
-  gap: 60px;
+
 }
 
 .linkContentInfo {
@@ -31,3 +27,6 @@
   border-radius: 10px;
 }
 
+.btnPos {
+  margin: 30px 0;
+}

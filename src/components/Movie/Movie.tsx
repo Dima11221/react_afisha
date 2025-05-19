@@ -5,7 +5,7 @@ import {AppDispatch, RootState} from "../../store/store.ts";
 import { useDispatch, useSelector } from "react-redux";
 import {fetchMovieDetails} from "../../store/reducers/thunk.ts";
 import {Link} from "react-router-dom";
-
+import {slugify} from "../../slugify.ts";
 
 const getSelector = ((state: RootState) => state.movies);
 
@@ -19,13 +19,17 @@ const Movie = (props: IMovie) => {
         Poster: poster,
     } = props;
 
+    // const location = useLocation()
+    // console.log(location.search)
 
     const dispatch = useDispatch<AppDispatch>();
     const [isVisible, setIsVisible] = useState(false);
     const { movieDetails, loading, error } = useSelector(getSelector);
+    // console.log(movieDetails[id])
 
 
     const details = movieDetails[id];
+    // console.log(details)
 
     const fetchDetails = async (): Promise<void> => {
         dispatch(fetchMovieDetails(id))
@@ -54,6 +58,8 @@ const Movie = (props: IMovie) => {
 
     }
 
+    const movieSlug = slugify(title)
+
     return (
         <div id={id} className={style.movieCard}>
             <div className="">
@@ -67,8 +73,8 @@ const Movie = (props: IMovie) => {
             </div>
             <div className={`${style.cardContent} ${style.left}`}>
                 <Link
-                    to={`/movie/${id}`}
-                    className={style.title}>
+                  to={`/movie/${movieSlug}?id=${id}`}
+                >
                     <span>
                         <h3 className={style.title}>{title}</h3>
                     </span>

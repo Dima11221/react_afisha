@@ -24,6 +24,7 @@ export const fetchMovies = createAsyncThunk(
             }
 
         } catch (error) {
+            console.log(error);
             return rejectWithValue('Network error');
         }
     }
@@ -77,6 +78,7 @@ export const fetchMovieDetails = createAsyncThunk(
                 return rejectWithValue("Error fetching details");
             }
         } catch (error) {
+            console.log(error);
             return rejectWithValue("Network error");
         }
     }

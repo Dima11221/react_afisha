@@ -16,7 +16,7 @@ function App() {
 
             <Routes>
                 <Route path="/" element={<Main />} />
-                <Route path="/movie/:imdbID" element={<MovieCard />} />
+                <Route path="/movie/:slug" element={<MovieCard />} />
             </Routes>
 
             <Footer text="GitHub page" />
