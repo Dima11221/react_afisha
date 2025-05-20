@@ -30,17 +30,19 @@ const Main = () => {
     const searchMovies = ({query, type}:IFilter) => {
 
         setSearchParams({query, type, page: '1'});
-        dispatch(fetchMovies({query, type, page: 1, append: false} ));
+
     };
 
     const handlePageChange = (newPage: number) => {
         setSearchParams({ query, type, page: newPage.toString() });
+
     };
 
     useEffect(() => {
         if (!query.trim()) return;
 
         dispatch(fetchMovies({query, type, page, append: false}))
+        // dispatch(fetchMovies({query, type, page, append: page > 1})) // Для бесконечной кнопки More
 
     }, [dispatch, query, type, page]);
 

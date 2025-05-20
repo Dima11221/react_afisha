@@ -18,6 +18,10 @@ const Pages = ({page, handlePageChange, loading, totalResults}: IPages) => {
         handlePageChange(Math.max(1, page - 1))
     }
 
+    // const handleInfinitePage = () => {      // Для бесконечной кнопки More
+    //     handlePageChange(page + 1)
+    // }
+
     return (
         <div className={style.buttonsPos}>
             <button
@@ -34,6 +38,15 @@ const Pages = ({page, handlePageChange, loading, totalResults}: IPages) => {
             >
                 <span>Next page</span>
             </button>
+
+            {/*<button*/}
+            {/*    onClick={handleInfinitePage}*/}
+            {/*    className={`${style.btn} ${style.btnReset} ${style.btnPage}`}*/}
+            {/*    disabled={loading || page * 10 >= totalResults}*/}
+            {/*>*/}
+            {/*    More...*/}
+            {/*</button>*/}
+
         </div>
     )
 }
