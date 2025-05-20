@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import {useEffect} from 'react';
 import { Movies } from '../../components/Movies/Movies.tsx';
 import { Search } from '../../components/Search/Search.tsx';
 import {Preloader} from "../../components/Preloader/Preloader.tsx";
@@ -22,39 +22,27 @@ const Main = () => {
 
     const dispatch = useDispatch<AppDispatch>();
 
-    const initalQuery = searchParams.get('query') || 'movie';
-    const initialType = (searchParams.get('type') as IFilter['type'] || 'all')
-    const initialPage = parseInt(searchParams.get('page') || '1', 10);
-    // console.log(initialPage, initialType, initalQuery)
+    const query = searchParams.get('query') || 'movie';
+    const type = (searchParams.get('type') as IFilter['type'] || 'all')
+    const page = parseInt(searchParams.get('page') || '1', 10);
 
-    const [type, setType] = useState<IFilter['type']>(initialType);
-    const [query, setQuery] = useState<string>(initalQuery);
-    const [page, setPage] = useState<number>(initialPage);
 
     const searchMovies = ({query, type}:IFilter) => {
-        if (!query.trim()) {
-            return;
-        }
 
-        setQuery(query);
-        setType(type);
-        setPage(1);
         setSearchParams({query, type, page: '1'});
         dispatch(fetchMovies({query, type, page: 1, append: false} ));
-    }
+    };
 
+    const handlePageChange = (newPage: number) => {
+        setSearchParams({ query, type, page: newPage.toString() });
+    };
 
     useEffect(() => {
-        const hasParams = searchParams.has('query') || searchParams.has('type') || searchParams.has('page');
-        const currentParams = searchParams.toString();
-        const newParams = new URLSearchParams({query, type, page: String(page)}).toString();
+        if (!query.trim()) return;
 
-        if (currentParams !== newParams && hasParams) {
-            setSearchParams(newParams);
-        }
-        dispatch(fetchMovies({query, type, page, append: page > 1
-    }));
-    }, [query, type, page, dispatch, searchParams, setSearchParams]);
+        dispatch(fetchMovies({query, type, page, append: false}))
+
+    }, [dispatch, query, type, page]);
 
 
 
@@ -68,7 +56,7 @@ const Main = () => {
                 {!loading && (
                     <>
                         <Movies movies={movies}/>
-                        <Pages page={page} setPage={setPage} loading={loading} totalResults={totalResults} />
+                        <Pages page={page} handlePageChange={handlePageChange} loading={loading} totalResults={totalResults} />
                     </>
                 )}
             </div>

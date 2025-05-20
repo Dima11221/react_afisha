@@ -12,9 +12,6 @@ const MovieCard = () => {
 
     const [searchParams] = useSearchParams();
     const imdbID = searchParams.get('id');
-    // console.log(imdbID)
-    // const {imdbID} = useParams<{imdbID: string}>()
-    // console.log({imdbID})
     const dispatch = useDispatch<AppDispatch>();
     const {movieDetails, loading, error} = useSelector(getMovieCardSelector);
 
@@ -28,7 +25,6 @@ const MovieCard = () => {
             dispatch(fetchMovieDetails(imdbID))
         }
     }, [imdbID, dispatch]);
-    // console.log(movieDetails)
 
 
     const details = movieDetails[imdbID ?? ''];

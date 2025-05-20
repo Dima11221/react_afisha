@@ -58,4 +58,4 @@ const Search = ({searchMovies, query, type: parentType}: ISearch) => {
 
 }
 
-export {Search};
+export {Search}

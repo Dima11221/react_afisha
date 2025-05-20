@@ -3,19 +3,19 @@ import style from "../../components/Pages/style.module.scss";
 
 interface IPages {
     page: number;
-    setPage: (page: number) => void;
+    handlePageChange: (page: number) => void;
     loading: boolean;
     totalResults: number;
 }
 
-const Pages = ({page, setPage, loading, totalResults}: IPages) => {
+const Pages = ({page, handlePageChange, loading, totalResults}: IPages) => {
 
     const handleNextPage = () => {
-        setPage(page + 1)
+        handlePageChange(page + 1)
     };
 
     const handlePreviousPage = () => {
-        setPage(Math.max(1, page - 1))
+        handlePageChange(Math.max(1, page - 1))
     }
 
     return (

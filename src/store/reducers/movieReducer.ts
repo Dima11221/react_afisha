@@ -34,7 +34,6 @@ const movieSlice = createSlice({
 
                 .addCase(fetchMovies.fulfilled, (state, action) => {
                     state.loading = false;
-                    state.movies = action.payload.movies;
                     state.totalResults = action.payload.totalResults;
 
                     if (action.payload.append) {
@@ -42,7 +41,7 @@ const movieSlice = createSlice({
                     } else {
                         state.movies = action.payload.movies;
                     }
-                    state.movies = action.payload.movies;
+
                 })
                 .addCase(fetchMovies.rejected, (state, action) => {
                     state.loading = false;
