@@ -19,13 +19,11 @@ const getMovieSelector = ((state: RootState) => state.movies);
 const Main = () => {
     const {movies, loading, totalResults} = useSelector(getMovieSelector);
     const [searchParams, setSearchParams] = useSearchParams();
-
     const dispatch = useDispatch<AppDispatch>();
 
     const query = searchParams.get('query') || 'movie';
     const type = (searchParams.get('type') as IFilter['type'] || 'all')
     const page = parseInt(searchParams.get('page') || '1', 10);
-    // console.log(initialPage, initialType, initalQuery)
 
 
     const searchMovies = ({query, type}:IFilter) => {
@@ -33,9 +31,7 @@ const Main = () => {
             return;
         }
 
-
         setSearchParams({query, type, page: '1'});
-        dispatch(fetchMovies({query, type, page: 1, append: false} ));
     }
 
 
@@ -45,7 +41,6 @@ const Main = () => {
 
     useEffect(() => {
 
-        // setSearchParams({query, type, page: '1'});
         dispatch(fetchMovies({query, type, page, append: false
     }));
     }, [query, type, page, dispatch]);
@@ -53,7 +48,7 @@ const Main = () => {
 
 
     return (
-        <main className={style.mainWrapper}>
+        <div className={style.mainWrapper}>
             <div>
                 <Search searchMovies={searchMovies} type={type} query={query} />
 
@@ -66,7 +61,7 @@ const Main = () => {
                     </>
                 )}
             </div>
-        </main>
+        </div>
     );
 
 }
