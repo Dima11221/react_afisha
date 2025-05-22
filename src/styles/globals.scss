@@ -69,6 +69,7 @@ body {
     --light-grey: #9e9e9e;
     --white: #fff;
     --green: #43A047;
+    --white-grey: #dedede;
 }
 
 .btn {
@@ -98,5 +99,9 @@ body {
     color: var(--grey);
     background-color: var(--light-grey);
     cursor: not-allowed;
+}
+
+.backgroundColor {
+    background: var(--white-grey);
 }
 

@@ -11,7 +11,7 @@ function App() {
     return (
 
     <HashRouter>
-        <div>
+        <div className='backgroundColor'>
             <Header title="OMDb Movies" />
 
             <Routes>
