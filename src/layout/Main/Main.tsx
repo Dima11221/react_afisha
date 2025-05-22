@@ -39,8 +39,8 @@ const Main = () => {
     }
 
 
-    const handleSetPage = (page: number) => {
-        setSearchParams({query, type, page: '1'});
+    const handleSetPage = (newPage: number) => {
+        setSearchParams({query, type, page: newPage.toString()});
     }
 
     useEffect(() => {
