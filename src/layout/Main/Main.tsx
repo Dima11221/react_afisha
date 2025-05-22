@@ -22,37 +22,31 @@ const Main = () => {
 
     const dispatch = useDispatch<AppDispatch>();
 
-    const initalQuery = searchParams.get('query') || 'movie';
-    const initialType = (searchParams.get('type') as IFilter['type'] || 'all')
-    const initialPage = parseInt(searchParams.get('page') || '1', 10);
+    const query = searchParams.get('query') || 'movie';
+    const type = (searchParams.get('type') as IFilter['type'] || 'all')
+    const page = parseInt(searchParams.get('page') || '1', 10);
     // console.log(initialPage, initialType, initalQuery)
 
-    const [type, setType] = useState<IFilter['type']>(initialType);
-    const [query, setQuery] = useState<string>(initalQuery);
-    const [page, setPage] = useState<number>(initialPage);
 
     const searchMovies = ({query, type}:IFilter) => {
         if (!query.trim()) {
             return;
         }
 
-        setQuery(query);
-        setType(type);
-        setPage(1);
+
         setSearchParams({query, type, page: '1'});
         dispatch(fetchMovies({query, type, page: 1, append: false} ));
     }
 
 
-    useEffect(() => {
-        const hasParams = searchParams.has('query') || searchParams.has('type') || searchParams.has('page');
-        const currentParams = searchParams.toString();
-        const newParams = new URLSearchParams({query, type, page: String(page)}).toString();
+    const handleSetPage = (page: number) => {
+        setSearchParams({query, type, page: '1'});
+    }
 
-        if (currentParams !== newParams && hasParams) {
-            setSearchParams(newParams);
-        }
-        dispatch(fetchMovies({query, type, page, append: page > 1
+    useEffect(() => {
+
+        setSearchParams({query, type, page: '1'});
+        dispatch(fetchMovies({query, type, page, append: false
     }));
     }, [query, type, page, dispatch, searchParams, setSearchParams]);
 
@@ -68,7 +62,7 @@ const Main = () => {
                 {!loading && (
                     <>
                         <Movies movies={movies}/>
-                        <Pages page={page} setPage={setPage} loading={loading} totalResults={totalResults} />
+                        <Pages page={page} handleSetPage={handleSetPage} loading={loading} totalResults={totalResults} />
                     </>
                 )}
             </div>
