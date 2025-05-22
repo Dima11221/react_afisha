@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import {useEffect} from 'react';
 import { Movies } from '../../components/Movies/Movies.tsx';
 import { Search } from '../../components/Search/Search.tsx';
 import {Preloader} from "../../components/Preloader/Preloader.tsx";
@@ -45,10 +45,10 @@ const Main = () => {
 
     useEffect(() => {
 
-        setSearchParams({query, type, page: '1'});
+        // setSearchParams({query, type, page: '1'});
         dispatch(fetchMovies({query, type, page, append: false
     }));
-    }, [query, type, page, dispatch, searchParams, setSearchParams]);
+    }, [query, type, page, dispatch]);
 
 
 
