@@ -48,7 +48,7 @@ const Main = () => {
 
 
     return (
-        <div className={style.mainWrapper}>
+        <div className={`${style.mainWrapper}`}>
             <div>
                 <Search searchMovies={searchMovies} type={type} query={query} />
 
